@@ -84,7 +84,7 @@ public class AddressControllerIntegrationTest {
 	@Test
 	public void getAddressByIdNotFound() throws Exception {
 		//GIVEN an empty address database
-		given(this.addressRepository.findById(2L)).willReturn(null);
+		given(this.addressRepository.findById(2L)).willReturn(Optional.empty());
 		
 		//WHEN calling the api to list a single address by ID
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.get("/api/address/"+address2.getId());

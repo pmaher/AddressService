@@ -28,7 +28,7 @@ public class AddressController {
 	@GetMapping("/address/{addressId}")
 	public ResponseEntity<?> getAddressById(@PathVariable("addressId") int addressId) {
 		Optional<Address> optionalEntity = addressRepository.findById((long) addressId);
-		if(optionalEntity.get() != null) {
+		if(optionalEntity.isPresent()) {
 			return ResponseEntity.ok().body(optionalEntity.get());			
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
